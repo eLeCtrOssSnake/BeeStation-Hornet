@@ -66,6 +66,17 @@
 	for(var/i = 1, i <= created_volume, i++)
 		new /obj/item/stack/sheet/mineral/plasma(location)
 
+/datum/chemical_reaction/uraniumsolidification
+	name = "Solid Uranium"
+	id = "soliduranium"
+	required_reagents = list(/datum/reagent/uranium/radium = 5, /datum/reagent/consumable/frostoil = 5, /datum/reagent/uranium = 20)
+	mob_react = FALSE
+
+/datum/chemical_reaction/uraniumsolidification/on_reaction(datum/reagents/holder, created_volume)
+	var/location = get_turf(holder.my_atom)
+	for(var/i = 1, i <= created_volume, i++)
+		new /obj/item/stack/sheet/mineral/uranium(location)
+
 /datum/chemical_reaction/goldsolidification
 	name = "Solid Gold"
 	id = "solidgold"
@@ -740,7 +751,7 @@
 	id = /datum/reagent/mutationtoxin/ipc
 	results = list(/datum/reagent/mutationtoxin/ipc = 5)
 	required_reagents  = list(/datum/reagent/mutationtoxin/unstable = 5, /datum/reagent/teslium = 20)
-	
+
 /datum/chemical_reaction/mutationtoxin/ethereal
 	name = /datum/reagent/mutationtoxin/ethereal
 	id = /datum/reagent/mutationtoxin/ethereal
